@@ -201,8 +201,128 @@ namespace SweetGift
 
         private static void StartFinding()
         {
+            Console.Clear();
+            while (true)
+            {
+                Console.WriteLine("Find by: " +
+                                  "\n1.Weight " +
+                                  "\n2.Sugar " +
+                                  "\n3.Name " +
+                                  "\n4.Company name " +
+                                  "\n5.Wrapper type " +
+                                  "\n6.Back");
+                int choose;
+                if (int.TryParse(Console.ReadLine(), out choose))
+                {
+                    IEnumerable<IGiftComponent> giftComponents;
 
+                    switch (choose)
+                    {
+
+                        case 1:
+                            {
+                                Console.WriteLine("-----------------------------");
+                                Console.WriteLine("Find by weight");
+                                Console.Write("Enter weight from:");
+                                int weightFrom;
+                                int.TryParse(Console.ReadLine(), out weightFrom);
+                                Console.Write("Enter weight to:");
+                                int weightTo;
+                                int.TryParse(Console.ReadLine(), out weightTo);
+                                giftComponents = Core.Gift.Where(component =>
+                                    weightFrom <= component.Weight && component.Weight <= weightTo);
+                            }
+                            break;
+                        case 2:
+                            {
+                                Console.WriteLine("-----------------------------");
+                                Console.WriteLine("Find by sugar");
+                                Console.Write("Enter sugar from:");
+                                int sugarFrom;
+                                int.TryParse(Console.ReadLine(), out sugarFrom);
+                                Console.Write("Enter sugar to:");
+                                int sugarTo;
+                                int.TryParse(Console.ReadLine(), out sugarTo);
+                                giftComponents = Core.Gift.Where(component =>
+                                    sugarFrom <= component.Sugar && component.Sugar <= sugarTo);
+                            }
+                            break;
+                        case 3:
+                            {
+                                Console.WriteLine("-----------------------------");
+                                Console.WriteLine("Find by name");
+                                Console.Write("Enter name:");
+                                var name = Console.ReadLine();
+                                giftComponents = Core.Gift.Where(component => 
+                                    !string.IsNullOrEmpty(component.Name) && component.Name.Contains(name));
+                            }
+                            break;
+                        case 4:
+                            {
+                                Console.WriteLine("-----------------------------");
+                                Console.WriteLine("Find by company name");
+                                Console.Write("Enter name:");
+                                var name = Console.ReadLine();
+                                giftComponents = Core.Gift.Where(component => 
+                                    !string.IsNullOrEmpty(component.CompanyName) && component.CompanyName.Contains(name));
+                            }
+                            break;
+                        case 5:
+                            {
+                                Console.WriteLine("-----------------------------");
+                                Console.WriteLine("Find by wrapper type");
+                                Console.WriteLine("1.Loose wrapper \n2.TightWrapper");
+                                int wrapperType;
+                                int.TryParse(Console.ReadLine(), out wrapperType);
+                                switch (wrapperType)
+                                {
+                                    case 1:
+                                        giftComponents = Core.Gift.Where(component => 
+                                            component.Wrapper != null && component.Wrapper.WrapperType == WrapperType.LooseWrapper);
+                                        break;
+                                    case 2:
+                                        giftComponents = Core.Gift.Where(component =>
+                                            component.Wrapper != null && component.Wrapper.WrapperType == WrapperType.TightWrapper);
+                                        break;
+                                    default:
+                                        continue;
+                                }
+                            }
+                            break;
+                        case 6:
+                            Console.Clear();
+                            return;
+                        default:
+                            Console.WriteLine("Wrong input data");
+                            Console.WriteLine("-----------------------------");
+                            continue;
+                    }
+
+                    if (giftComponents.Any())
+                    {
+                        Console.Clear();
+                        var i = 1;
+                        foreach (var giftComponent in giftComponents)
+                        {
+                            ShowComponentInfo(giftComponent, i);
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Cannot find elements by search criteria");
+                    }
+                    
+                }
+                else
+                {
+                    Console.WriteLine("Wrong input data");
+                    Console.WriteLine("-----------------------------");
+                }
+            }
         }
+
 
         private static void ShowChocolateComponents()
         {

@@ -4,8 +4,8 @@ namespace SweetGift.Data
 {
     enum WrapperType
     {
-        TightWrapper,
-        LooseWrapper
+        LooseWrapper,
+        TightWrapper
     }
 
     class Wrapper
