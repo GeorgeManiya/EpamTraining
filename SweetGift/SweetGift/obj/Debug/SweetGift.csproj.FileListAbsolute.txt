@@ -1,0 +1,12 @@
+D:\SweetGift\SweetGift\bin\Debug\SweetGift.exe.config
+D:\SweetGift\SweetGift\bin\Debug\SweetGift.exe
+D:\SweetGift\SweetGift\bin\Debug\SweetGift.pdb
+D:\SweetGift\SweetGift\obj\Debug\SweetGift.csprojResolveAssemblyReference.cache
+D:\SweetGift\SweetGift\obj\Debug\SweetGift.exe
+D:\SweetGift\SweetGift\obj\Debug\SweetGift.pdb
+D:\EPAM Training\SweetGift\SweetGift\bin\Debug\SweetGift.exe.config
+D:\EPAM Training\SweetGift\SweetGift\obj\Debug\SweetGift.exe
+D:\EPAM Training\SweetGift\SweetGift\obj\Debug\SweetGift.pdb
+D:\EPAM Training\SweetGift\SweetGift\bin\Debug\SweetGift.exe
+D:\EPAM Training\SweetGift\SweetGift\bin\Debug\SweetGift.pdb
+D:\EPAM Training\SweetGift\SweetGift\obj\Debug\SweetGift.csprojResolveAssemblyReference.cache

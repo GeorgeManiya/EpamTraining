@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SweetGift>
+  <Biscuit MakingType="HandMade">
+    <Weight>10</Weight>
+    <Sugar>7</Sugar>
+  </Biscuit>
+  <Candy MakingType="HandMade">
+    <Weight>5</Weight>
+    <Sugar>3</Sugar>
+  </Candy>
+  <ChocolateEgg MakingType="HandMade">
+    <Weight>8</Weight>
+    <Sugar>1</Sugar>
+    <Wrapper WrapperType="LooseWrapper">
+      <Weight>5</Weight>
+    </Wrapper>
+  </ChocolateEgg>
+  <Lollipop MakingType="HandMade">
+    <Weight>7</Weight>
+    <Sugar>2</Sugar>
+  </Lollipop>
+</SweetGift>
