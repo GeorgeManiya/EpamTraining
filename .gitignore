@@ -3,3 +3,6 @@ SweetGift/SweetGift/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E7
 SweetGift/SweetGift/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
 SweetGift/SweetGift/Program.cs
 SweetGift/SweetGift/obj/Debug/SweetGift.csproj.FileListAbsolute.txt
+*.suo
+*.cache
+Task #1/SweetGift/SweetGift/obj/Debug/SweetGift.csproj.FileListAbsolute.txt
