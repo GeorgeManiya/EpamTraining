@@ -84,10 +84,10 @@ namespace SweetGift
                             Console.WriteLine("-----------------------------");
                             break;
                         case 3:
-                            StartSorting();
+                            SortByProperty();
                             break;
                         case 4:
-                            StartFinding();
+                            FindByProperty();
                             break;
                         case 5:
                             ShowChocolateComponents();
@@ -130,7 +130,7 @@ namespace SweetGift
             Console.WriteLine();
         }
 
-        private static void StartSorting()
+        private static void SortByProperty()
         {
             Console.Clear();
             while (true)
@@ -199,7 +199,7 @@ namespace SweetGift
             }
         }
 
-        private static void StartFinding()
+        private static void FindByProperty()
         {
             Console.Clear();
             while (true)

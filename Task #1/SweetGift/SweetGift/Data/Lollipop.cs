@@ -9,7 +9,21 @@ namespace SweetGift.Data
 {
     class Lollipop : GiftComponent
     {
-        public InediblePart Stick { get; set; }
+        public Lollipop() { }
+
+        public Lollipop(int weight, int sugar, string name, string companyName, Wrapper wrapper, GiftComponentMakingType makingType, InediblePart stick) 
+            : base(weight, sugar, name, companyName, wrapper, makingType)
+        {
+            _stick = stick;
+        }
+
+        private InediblePart _stick;
+
+        public InediblePart Stick
+        {
+            get { return _stick; }
+            set { _stick = value; }
+        }
 
         public override int NetWeight
         {

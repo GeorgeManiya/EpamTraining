@@ -9,9 +9,30 @@ namespace SweetGift.Data
 {
     class ChocolateEgg : GiftComponent, IChocolate
     {
-        public int Chocolate { get; set; }
+        public ChocolateEgg() { }
 
-        public InediblePart Toy { get; set; }
+        public ChocolateEgg(int weight, int sugar, int chocolate, string name, string companyName, Wrapper wrapper, GiftComponentMakingType makingType, InediblePart toy) 
+            : base(weight, sugar, name, companyName, wrapper, makingType)
+        {
+            _chocolate = chocolate;
+            _toy = toy;
+        }
+
+        private int _chocolate;
+
+        public int Chocolate
+        {
+            get { return _chocolate; }
+            set { _chocolate = value; }
+        }
+
+        private InediblePart _toy;
+
+        public InediblePart Toy
+        {
+            get { return _toy; }
+            set { _toy = value; }
+        }
 
         public override int NetWeight
         {
