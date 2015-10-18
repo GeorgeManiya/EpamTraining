@@ -71,7 +71,7 @@ namespace SweetGift.Data
         {
             get
             {
-                return _giftComponents.Aggregate(0, (totalSugar, component) => totalSugar + component.Sugar);
+                return _giftComponents.Sum(component => component.Sugar);
             }
         }
 
@@ -79,7 +79,7 @@ namespace SweetGift.Data
         {
             get
             {
-                return _giftComponents.Aggregate(0, (totalWeight, component) => totalWeight + component.Weight);
+                return _giftComponents.Sum(component => component.Weight);
             }
         }
 
@@ -91,8 +91,7 @@ namespace SweetGift.Data
         {
             get
             {
-                return _giftComponents.OfType<IChocolate>()
-                    .Aggregate(0, (totalChocolate, c) => totalChocolate + c.Chocolate);
+                return _giftComponents.OfType<IChocolate>().Sum(c => c.Chocolate);
             }
 
             set {}
@@ -104,7 +103,7 @@ namespace SweetGift.Data
         {
             get
             {
-                return _giftComponents.Aggregate(0, (totalNetWeight, component) => totalNetWeight + component.NetWeight);
+                return _giftComponents.Sum(component => component.NetWeight);
             }
         }
     }
