@@ -19,3 +19,6 @@ C:\Users\Георгий\Documents\GitHub\EpamTraining\SweetGift\SweetGift\obj\De
 C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #1\SweetGift\SweetGift\bin\Debug\SweetGift.exe.config
 C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #1\SweetGift\SweetGift\obj\Debug\SweetGift.exe
 C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #1\SweetGift\SweetGift\obj\Debug\SweetGift.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #1\SweetGift\SweetGift\bin\Debug\SweetGift.exe
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #1\SweetGift\SweetGift\bin\Debug\SweetGift.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #1\SweetGift\SweetGift\obj\Debug\SweetGift.csprojResolveAssemblyReference.cache
