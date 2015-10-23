@@ -9,11 +9,11 @@ namespace LinguisticLibrary.Data
 {
     abstract class TextElement : ITextElement
     {
-        public virtual string TextValue { get; set; }
+        public virtual string StringValue { get; set; }
 
         public override string ToString()
         {
-            return TextValue;
+            return StringValue;
         }
     }
 }

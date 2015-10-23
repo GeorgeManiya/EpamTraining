@@ -17,11 +17,11 @@ namespace LinguisticLibrary.Data
             _items = new List<T>();
         }
 
-        public override string TextValue
+        public override string StringValue
         {
             get
             {
-                return _items.Aggregate(string.Empty, (value, item) => string.Concat(value, item.TextValue));
+                return _items.Aggregate(string.Empty, (value, item) => string.Concat(value, item.StringValue));
             }
         }
 

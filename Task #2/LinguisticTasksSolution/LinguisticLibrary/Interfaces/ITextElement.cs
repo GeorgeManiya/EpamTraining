@@ -8,6 +8,6 @@ namespace LinguisticLibrary.Interfaces
 {
     internal interface ITextElement
     {
-        string TextValue { get; }
+        string StringValue { get; }
     }
 }
