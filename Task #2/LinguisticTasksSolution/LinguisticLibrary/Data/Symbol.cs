@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LinguisticLibrary.Data
 {
-    class Symbol : TextElement
+    class Symbol : SingleTextElement
     {
     }
 }

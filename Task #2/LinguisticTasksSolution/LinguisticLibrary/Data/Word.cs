@@ -8,7 +8,7 @@ using System.Collections;
 
 namespace LinguisticLibrary.Data
 {
-    class Word : CombineTextElement<Symbol>, ITextElement
+    class Word : SingleTextElement
     {
     }
 }

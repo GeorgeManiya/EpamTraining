@@ -24,15 +24,24 @@ namespace LinguisticLibrary.Data
         SpaceMark               // space
     }
 
-    struct PunctuationMark : ITextElement
+    public struct PunctuationMark : ISingleTextElement
     {
+        public PunctuationMark(string stringValue, PunctuationMarkType type)
+        {
+            StringValue = stringValue;
+            Type = type;
+        }
+
         public PunctuationMarkType Type { get; set; }
 
-        public string TextValue { get; set; }
+        public string StringValue { get; set; }
 
         public override string ToString()
         {
-            return TextValue;
+            return StringValue;
+        }
+    }
+
         }
     }
 }
