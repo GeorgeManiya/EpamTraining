@@ -38,3 +38,13 @@ Task #2/LinguisticTasksSolution/LinguisticFeaturesAnalyzer/Properties/Settings.D
 *.settings
 Task #2/LinguisticTasksSolution/LinguisticFeaturesAnalyzer/Properties/Resources.Designer.cs
 Task #2/LinguisticTasksSolution/LinguisticFeaturesAnalyzer/Properties/AssemblyInfo.cs
+Task #2/LinguisticTasksSolution/LinguisticFeaturesAnalyzer/bin/Debug/LinguisticFeaturesAnalyzer.exe
+*.exe
+Task #2/LinguisticTasksSolution/LinguisticFeaturesAnalyzer/obj/Debug/App.g.cs
+*.dll
+Task #2/LinguisticTasksSolution/LinguisticFeaturesAnalyzer/obj/Debug/LinguisticFeaturesAnalyzer.csproj.FileListAbsolute.txt
+*.resources
+Task #2/LinguisticTasksSolution/LinguisticFeaturesAnalyzer/obj/Debug/MainWindow.g.cs
+*.baml
+*.manifest
+*.config
