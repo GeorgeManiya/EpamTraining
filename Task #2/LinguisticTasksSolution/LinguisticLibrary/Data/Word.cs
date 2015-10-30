@@ -8,7 +8,10 @@ using System.Collections;
 
 namespace LinguisticLibrary.Data
 {
-    class Word : SingleTextElement
+    class Word : CombineTextElement<ISingleTextElement>, ISingleTextElement
     {
+        public SingleTextElementInnerOption InnerOption { get; set; }
+
+        public bool IsDecomposite { get { return this.Count > 1; } }
     }
 }
