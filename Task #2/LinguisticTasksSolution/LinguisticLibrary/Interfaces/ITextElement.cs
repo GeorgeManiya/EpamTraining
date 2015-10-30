@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LinguisticLibrary.Interfaces
 {
-    internal interface ITextElement
+    public interface ITextElement
     {
         string StringValue { get; }
     }

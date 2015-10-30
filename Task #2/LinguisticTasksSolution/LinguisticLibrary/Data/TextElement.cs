@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LinguisticLibrary.Data
 {
-    abstract class TextElement : ITextElement
+    public abstract class TextElement : ITextElement
     {
         public virtual string StringValue { get; set; }
 

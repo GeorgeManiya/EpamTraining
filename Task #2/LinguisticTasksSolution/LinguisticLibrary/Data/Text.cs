@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LinguisticLibrary.Data
 {
-    class Text : CombineTextElement<Sentence>
+    public class Text : CombineTextElement<Sentence>
     {
     }
 }

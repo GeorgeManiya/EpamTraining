@@ -9,5 +9,6 @@ namespace LinguisticLibrary.Data
 {
     internal abstract class SingleTextElement : TextElement, ISingleTextElement
     {
+        public SingleTextElementInnerOption InnerOption { get; }
     }
 }

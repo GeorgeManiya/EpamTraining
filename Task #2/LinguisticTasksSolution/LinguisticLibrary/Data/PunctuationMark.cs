@@ -23,20 +23,24 @@ namespace LinguisticLibrary.Data
         IllustrationMark,       // dash between words
         AdditionalMark,         // brackets
         CitationMark,           // quotes
-        SpaceMark               // space
+        SpaceMark,              // space
+        None
     }
 
     public struct PunctuationMark : ISingleTextElement
     {
-        public PunctuationMark(string stringValue, PunctuationMarkType type)
+        public PunctuationMark(string stringValue, PunctuationMarkType type, SingleTextElementInnerOption innerOption)
         {
             StringValue = stringValue;
             Type = type;
+            InnerOption = innerOption;
         }
 
         public PunctuationMarkType Type { get; set; }
 
         public string StringValue { get; set; }
+
+        public SingleTextElementInnerOption InnerOption { get; set; }
 
         public override string ToString()
         {
@@ -66,29 +70,29 @@ namespace LinguisticLibrary.Data
 
         static DefaultPunctuationMarks()
         {
-            _spaceMark = new PunctuationMark(" ", PunctuationMarkType.SpaceMark);
+            _spaceMark = new PunctuationMark(" ", PunctuationMarkType.SpaceMark, SingleTextElementInnerOption.None);
 
             _terminalPunctuationMarks = new Collection<PunctuationMark>()
             {
-                new PunctuationMark(".", PunctuationMarkType.EndMark),
-                new PunctuationMark("?", PunctuationMarkType.QuestionMark),
-                new PunctuationMark("!", PunctuationMarkType.ExclamationMark),
-                new PunctuationMark("...", PunctuationMarkType.UnfinishedMark),
-                new PunctuationMark("?!", PunctuationMarkType.AccentMark),
-                new PunctuationMark("!?", PunctuationMarkType.AccentMark)
+                new PunctuationMark(".", PunctuationMarkType.EndMark, SingleTextElementInnerOption.RightSpace),
+                new PunctuationMark("?", PunctuationMarkType.QuestionMark, SingleTextElementInnerOption.RightSpace),
+                new PunctuationMark("!", PunctuationMarkType.ExclamationMark, SingleTextElementInnerOption.RightSpace),
+                new PunctuationMark("...", PunctuationMarkType.UnfinishedMark, SingleTextElementInnerOption.RightSpace),
+                new PunctuationMark("?!", PunctuationMarkType.AccentMark, SingleTextElementInnerOption.RightSpace),
+                new PunctuationMark("!?", PunctuationMarkType.AccentMark, SingleTextElementInnerOption.RightSpace)
             };
 
             _internalPunctuationMarks = new Collection<PunctuationMark>()
             {
-                new PunctuationMark(",", PunctuationMarkType.CommaMark),
-                new PunctuationMark(".", PunctuationMarkType.AbreviationMark),
-                new PunctuationMark(";", PunctuationMarkType.EnumerationMark),
-                new PunctuationMark(":", PunctuationMarkType.GeneralizationMark),
-                new PunctuationMark("-", PunctuationMarkType.ConnectionMark),
-                new PunctuationMark("-", PunctuationMarkType.IllustrationMark),
-                new PunctuationMark("(", PunctuationMarkType.AdditionalMark),
-                new PunctuationMark(")", PunctuationMarkType.AdditionalMark),
-                new PunctuationMark("'", PunctuationMarkType.CitationMark)
+                new PunctuationMark(",", PunctuationMarkType.CommaMark, SingleTextElementInnerOption.RightSpace),
+                new PunctuationMark(".", PunctuationMarkType.AbreviationMark, SingleTextElementInnerOption.None),
+                new PunctuationMark(";", PunctuationMarkType.EnumerationMark, SingleTextElementInnerOption.RightSpace),
+                new PunctuationMark(":", PunctuationMarkType.GeneralizationMark, SingleTextElementInnerOption.RightSpace),
+                new PunctuationMark("-", PunctuationMarkType.ConnectionMark, SingleTextElementInnerOption.None),
+                new PunctuationMark("-", PunctuationMarkType.IllustrationMark, SingleTextElementInnerOption.BothSpace),
+                new PunctuationMark("(", PunctuationMarkType.AdditionalMark, SingleTextElementInnerOption.LeftSpace),
+                new PunctuationMark(")", PunctuationMarkType.AdditionalMark, SingleTextElementInnerOption.RightSpace),
+                new PunctuationMark("'", PunctuationMarkType.CitationMark, SingleTextElementInnerOption.LeftSpace)
             };
         }
     }

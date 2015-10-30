@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace LinguisticLibrary.Interfaces
 {
-    internal interface ISingleTextElement : ITextElement
+    public enum SingleTextElementInnerOption
     {
+        None,
+        LeftSpace,
+        RightSpace,
+        BothSpace
+    }
+
+    public interface ISingleTextElement : ITextElement
+    {
+         SingleTextElementInnerOption InnerOption { get; }
     }
 }
