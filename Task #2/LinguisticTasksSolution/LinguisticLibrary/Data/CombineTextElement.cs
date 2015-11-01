@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LinguisticLibrary.Data
 {
-    abstract class CombineTextElement<T> : TextElement, ICollection<T> where T : ITextElement
+    public abstract class CombineTextElement<T> : TextElement, ICollection<T> where T : ITextElement
     {
         private ICollection<T> _items;
 
@@ -32,7 +32,7 @@ namespace LinguisticLibrary.Data
         {
             get
             {
-                throw new NotImplementedException();
+                return _items.Count;
             }
         }
 
@@ -40,43 +40,43 @@ namespace LinguisticLibrary.Data
         {
             get
             {
-                throw new NotImplementedException();
+                return _items.IsReadOnly;
             }
         }
 
         public void Add(T item)
         {
-            throw new NotImplementedException();
+            _items.Add(item);
         }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            _items.Clear();
         }
 
         public bool Contains(T item)
         {
-            throw new NotImplementedException();
+            return _items.Contains(item);
         }
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            _items.CopyTo(array, arrayIndex);
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _items.GetEnumerator();
         }
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            return _items.Remove(item);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return this.GetEnumerator();
         }
 
         #endregion
