@@ -11,6 +11,11 @@ namespace LinguisticLibrary.Data
     {
         public virtual string StringValue { get; set; }
 
+        public bool HasValue
+        {
+            get { return !string.IsNullOrEmpty(StringValue); }
+        }
+
         public override string ToString()
         {
             return StringValue;

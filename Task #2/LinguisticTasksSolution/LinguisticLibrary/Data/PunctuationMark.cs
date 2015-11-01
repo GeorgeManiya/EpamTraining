@@ -40,6 +40,11 @@ namespace LinguisticLibrary.Data
 
         public string StringValue { get; set; }
 
+        public bool HasValue
+        {
+            get { return !string.IsNullOrEmpty(StringValue); }
+        }
+
         public SingleTextElementInnerOption InnerOption { get; set; }
 
         public override string ToString()
@@ -86,13 +91,15 @@ namespace LinguisticLibrary.Data
             {
                 new PunctuationMark(",", PunctuationMarkType.CommaMark, SingleTextElementInnerOption.RightSpace),
                 new PunctuationMark(".", PunctuationMarkType.AbreviationMark, SingleTextElementInnerOption.None),
+                new PunctuationMark(".", PunctuationMarkType.AbreviationMark, SingleTextElementInnerOption.RightSpace),
                 new PunctuationMark(";", PunctuationMarkType.EnumerationMark, SingleTextElementInnerOption.RightSpace),
                 new PunctuationMark(":", PunctuationMarkType.GeneralizationMark, SingleTextElementInnerOption.RightSpace),
                 new PunctuationMark("-", PunctuationMarkType.ConnectionMark, SingleTextElementInnerOption.None),
                 new PunctuationMark("-", PunctuationMarkType.IllustrationMark, SingleTextElementInnerOption.BothSpace),
                 new PunctuationMark("(", PunctuationMarkType.AdditionalMark, SingleTextElementInnerOption.LeftSpace),
                 new PunctuationMark(")", PunctuationMarkType.AdditionalMark, SingleTextElementInnerOption.RightSpace),
-                new PunctuationMark("'", PunctuationMarkType.CitationMark, SingleTextElementInnerOption.LeftSpace)
+                new PunctuationMark("\"", PunctuationMarkType.CitationMark, SingleTextElementInnerOption.LeftSpace),
+                new PunctuationMark("\"", PunctuationMarkType.CitationMark, SingleTextElementInnerOption.RightSpace)
             };
         }
     }

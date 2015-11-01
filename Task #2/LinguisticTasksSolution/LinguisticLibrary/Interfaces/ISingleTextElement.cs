@@ -16,6 +16,6 @@ namespace LinguisticLibrary.Interfaces
 
     public interface ISingleTextElement : ITextElement
     {
-         SingleTextElementInnerOption InnerOption { get; }
+         SingleTextElementInnerOption InnerOption { get; set; }
     }
 }

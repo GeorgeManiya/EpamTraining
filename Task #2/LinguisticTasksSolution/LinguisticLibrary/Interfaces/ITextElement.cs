@@ -9,5 +9,7 @@ namespace LinguisticLibrary.Interfaces
     public interface ITextElement
     {
         string StringValue { get; }
+
+        bool HasValue { get; }
     }
 }
