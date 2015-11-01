@@ -1,12 +1,79 @@
 ﻿<Window x:Class="LinguisticFeaturesAnalyzer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LinguisticFeaturesAnalyzer"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:text="clr-namespace:LinguisticLibrary.Data;assembly=LinguisticLibrary"
+        xmlns:textInterfaces="clr-namespace:LinguisticLibrary.Interfaces;assembly=LinguisticLibrary"
+        xmlns:data="clr-namespace:LinguisticFeaturesAnalyzer.Data"
+        Title="MainWindow" Height="350" Width="700">
+    <Window.Resources>
+        <data:BooleanToBrushConverter x:Key="ActiveBrushConverter"
+                                      True="Red" False="Transparent"/>
+    </Window.Resources>
+    
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="File" 
+                      Click="OnMenuItemClick"/>
+        </Menu>
+        <!--<ItemsControl Name="TextContainer" Grid.Row="1">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type textInterfaces:ISingleTextElement}">
+                    <TextBlock Text="{Binding}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>-->
+        <ItemsControl Name="TextContainer" Grid.Row="1">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type data:ActiveSentence}">
+                    <ItemsControl ItemsSource="{Binding}">
+                        <ItemsControl.Background>
+                            <Binding Path="IsActive" NotifyOnSourceUpdated="True"
+                                     Converter="{StaticResource ActiveBrushConverter}"/>
+                        </ItemsControl.Background>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="Text" Text="{Binding}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="По типу предложений">
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox Name="SentenceTypeComboBox" Width="100" Margin="5"/>
+                    <Button Name="FilterBySentenceTypeButton" Margin="5"
+                            Content="Фильтровать" Width="100"
+                            Click="OnFilterBySentenceTypeButtonClick"/>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
     </Grid>
 </Window>
