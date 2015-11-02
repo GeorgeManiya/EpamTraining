@@ -99,7 +99,11 @@ namespace LinguisticLibrary.Data
                                 sentenceParts.Add(compositeWord);
                         }
 
-                        if(index + markLenght < sPart.Length)
+                        if(index == 0)
+                        {
+                            sentenceParts.Add(mark);
+                        }
+                        else if(index + markLenght < sPart.Length)
                         {
                             compositeWord.Add(mark);
                             if (!sentenceParts.Contains(compositeWord))
