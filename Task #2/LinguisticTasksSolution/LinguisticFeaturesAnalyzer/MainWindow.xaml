@@ -5,6 +5,7 @@
         xmlns:text="clr-namespace:LinguisticLibrary.Data;assembly=LinguisticLibrary"
         xmlns:textInterfaces="clr-namespace:LinguisticLibrary.Interfaces;assembly=LinguisticLibrary"
         xmlns:data="clr-namespace:LinguisticFeaturesAnalyzer.Data"
+        xmlns:res="clr-namespace:LinguisticFeaturesAnalyzer.Properties"
         Title="MainWindow" Height="350" Width="750">
     <Window.Resources>
         <data:BooleanToBrushConverter x:Key="ActiveBrushConverter"
@@ -18,7 +19,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Menu>
-            <MenuItem Header="File" 
+            <MenuItem Header="{x:Static res:Resources.OpenFileMenuItem}" 
                       Click="OnMenuItemClick"/>
         </Menu>
         <ItemsControl Name="TextContainer" Grid.Row="1" Margin="5" BorderBrush="LightGray"
@@ -73,7 +74,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <GroupBox Header="Выделить предложения по" Margin="5">
+            <GroupBox Header="{x:Static res:Resources.DistinguishByGroupBox}" Margin="5">
                 <Grid Margin="2">
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -82,8 +83,8 @@
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal">
                         <RadioButton Name="EnableByTerminalPunctuationsRadioButton" IsChecked="True"
-                                     Width="170" VerticalContentAlignment="Center" GroupName="ByPunctuationType"> 
-                            <TextBlock Text="содержит разделительные знаки пунктуации"
+                                     Width="170" VerticalContentAlignment="Center" GroupName="ByPunctuationType">
+                            <TextBlock Text="{x:Static res:Resources.ContainsTerminalPunctuations}"
                                        TextWrapping="Wrap"/>
                         </RadioButton>
                         <ComboBox Name="TerminalPunctuationTypeComboBox" Width="50" Margin="5"
@@ -92,18 +93,18 @@
                     <StackPanel Orientation="Horizontal" Grid.Row="1">
                         <RadioButton Name="EnableByInternalPunctuationsRadioButton" 
                                      Width="170" VerticalContentAlignment="Center" GroupName="ByPunctuationType">
-                            <TextBlock Text="содержит внутренние знаки пунктуации"
+                            <TextBlock Text="{x:Static res:Resources.ContainsInternalPunctuations}"
                                        TextWrapping="Wrap"/>
                         </RadioButton>
                         <ComboBox Name="InternalPunctuationTypeComboBox" Width="50" Margin="5"
                                   IsEnabled="{Binding ElementName=EnableByInternalPunctuationsRadioButton, Path=IsChecked, Mode=OneWay}"/>
                     </StackPanel>
                     <Button Name="FilterBySentenceTypeButton" Margin="0,2" HorizontalAlignment="Left"
-                            Content="Выделить" Width="100" Grid.Row="2" Height="25"
+                            Content="{x:Static res:Resources.DistinguishButton}" Width="100" Grid.Row="2" Height="25"
                             Click="OnFilterBySentenceTypeButtonClick"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Header="Быстрая замена" Margin="5" Grid.Column="1">
+            <GroupBox Header="{x:Static res:Resources.ChangeGroupBox}" Margin="5" Grid.Column="1">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -111,21 +112,21 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Искомое слово" VerticalAlignment="Center" Width="100"/>
+                        <TextBlock Text="{x:Static res:Resources.OriginalWord}" VerticalAlignment="Center" Width="100"/>
                         <TextBox Name="OriginalWord" Width="150" Margin="2" 
                                  VerticalContentAlignment="Center" Height="25"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="1">
-                        <TextBlock Text="Заменить на" VerticalAlignment="Center" Width="100"/>
+                        <TextBlock Text="{x:Static res:Resources.NewWord}" VerticalAlignment="Center" Width="100"/>
                         <TextBox Name="NewWord" Width="150" Margin="2" 
                                  VerticalContentAlignment="Center" Height="25"/>
                     </StackPanel>
                     <Button Name="ChangeWordsInTextButton" Grid.Row="2" Height="25"
-                            HorizontalAlignment="Left" Content="Заменить" Margin="0,2" Width="100"
+                            HorizontalAlignment="Left" Content="{x:Static res:Resources.ChangeButton}" Margin="0,2" Width="100"
                             Click="OnChangeWordsInTextButtonClick"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Header="Дополнительно" Margin="5" Grid.Column="2"
+            <GroupBox Header="{x:Static res:Resources.AdditionalGroupBox}" Margin="5" Grid.Column="2"
                       HorizontalAlignment="Left">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -135,14 +136,14 @@
                     </Grid.RowDefinitions>
                     <RadioButton Name="SortByWordsCountRadioButton" Width="180" VerticalContentAlignment="Center" Margin="5,0"
                                  IsChecked="True">
-                        <TextBlock Text="Отсортировать по количесву слов в предложении" TextWrapping="Wrap"/>
+                        <TextBlock Text="{x:Static res:Resources.SortByWordsCount}" TextWrapping="Wrap"/>
                     </RadioButton>
                     <RadioButton Name="SortBySentenceCountRadioButton" Width="180" Grid.Row="1" 
                                  VerticalContentAlignment="Center" Margin="5,0">
-                        <TextBlock Text="Отсортировать по количесву предложений в абзаце" TextWrapping="Wrap"/>
+                        <TextBlock Text="{x:Static res:Resources.SortBySentenceCount}" TextWrapping="Wrap"/>
                     </RadioButton>
                     <Button Name="SortByButton" Grid.Row="2" HorizontalAlignment="Left"
-                            Margin="0,2" Content="Сортировать" Width="100" Height="25"
+                            Margin="0,2" Content="{x:Static res:Resources.SortButton}" Width="100" Height="25"
                             Click="OnSortByButtonClick"/>
                 </Grid>
             </GroupBox>
