@@ -1,10 +1,6 @@
 ﻿using LinguisticLibrary.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LinguisticLibrary.Data
 {
@@ -49,11 +45,23 @@ namespace LinguisticLibrary.Data
 
         public override string ToString()
         {
+            switch (InnerOption)
+            {
+                case SingleTextElementInnerOption.None:
+                    return StringValue;
+                case SingleTextElementInnerOption.LeftSpace:
+                    return " " + StringValue;
+                case SingleTextElementInnerOption.RightSpace:
+                    return StringValue + " ";
+                case SingleTextElementInnerOption.BothSpace:
+                    return " " + StringValue + " ";
+            }
+
             return StringValue;
         }
     }
 
-    static class DefaultPunctuationMarks
+    public static class DefaultPunctuationMarks
     {
         private static ICollection<PunctuationMark> _terminalPunctuationMarks;
         public static ICollection<PunctuationMark> TerminalPunctuationMarks
