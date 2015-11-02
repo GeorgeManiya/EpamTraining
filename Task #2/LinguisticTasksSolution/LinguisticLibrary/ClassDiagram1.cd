@@ -15,17 +15,10 @@
       <FileName>Data\Sentence.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="LinguisticLibrary.Data.Symbol" Collapsed="true">
-    <Position X="10" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Data\Symbol.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="LinguisticLibrary.Data.Text" Collapsed="true">
     <Position X="0.5" Y="4.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Data\Text.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -38,7 +31,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="LinguisticLibrary.Data.Word" Collapsed="true">
-    <Position X="7.25" Y="4.5" Width="2.5" />
+    <Position X="8.25" Y="4.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Data\Word.cs</FileName>
@@ -48,7 +41,7 @@
   <Class Name="LinguisticLibrary.Data.SingleTextElement" Collapsed="true">
     <Position X="8.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>IAAAAACAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
       <FileName>Data\SingleTextElement.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -63,12 +56,12 @@
   <Class Name="LinguisticLibrary.Data.TextParser" Collapsed="true">
     <Position X="3" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAIAAAAAAAAAAAAAEAAAAAAAAAASAAAYAABAgA=</HashCode>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAEAAAAAAAAAASAAAQAAAAgA=</HashCode>
       <FileName>Data\TextParser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LinguisticLibrary.Data.CompositeWord" Collapsed="true">
-    <Position X="5.5" Y="4.5" Width="1.5" />
+    <Position X="5.5" Y="4.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Data\CompositeWord.cs</FileName>

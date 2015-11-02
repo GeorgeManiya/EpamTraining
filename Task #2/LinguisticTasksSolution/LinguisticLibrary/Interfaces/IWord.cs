@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace LinguisticLibrary.Interfaces
 {
-    public interface ITextElement
+    public interface IWord : ISingleTextElement
     {
-        string StringValue { get; set; }
-
-        bool HasValue { get; }
     }
 }

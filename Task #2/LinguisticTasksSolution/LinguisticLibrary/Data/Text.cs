@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace LinguisticLibrary.Data
 {
-    public class Text : CombineTextElement<Sentence>
+    public class Text : CombineTextElement<Paragraph>
     {
+        public IList<Sentence> GetSentences()
+        {
+            var sentenceList = new List<Sentence>();
+            foreach(var paragraph in this)
+            {
+                sentenceList.AddRange(paragraph);
+            }
+
+            return sentenceList;
+        }
     }
 }

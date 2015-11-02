@@ -11,26 +11,36 @@ namespace LinguisticLibrary.Data
         public static Text Parse(TextReader reader)
         {
             var text = new Text();
+
             var line = reader.ReadLine();
             while(!string.IsNullOrEmpty(line))
             {
-                while(!string.IsNullOrEmpty(line))
+                var paragraph = new Paragraph();
+                text.Add(paragraph);
+
+                while (!string.IsNullOrEmpty(line))
                 {
                     var sentenceString = line;
                     var terminalPunctuationMark = line.GetFirstOrDefaultPunctuationMark(DefaultPunctuationMarks.TerminalPunctuationMarks);
                     if (terminalPunctuationMark.HasValue)
                     {
                         var index = line.IndexOfPunctuationMark(terminalPunctuationMark);
-                        sentenceString = line.Substring(0, index);
+                        sentenceString = line.Substring(0, index).TrimStart(' ');
                         line = line.Remove(0, index + terminalPunctuationMark.StringValue.Length);
 
-                        if (text.Any())
+                        if(text.Count > 1)
                         {
-                            var lastSentence = text.Last();
-                            if (lastSentence.IsNotFinished)
+                            var lastParagraph = text.Last(p => p.HasValue);
+                            if (lastParagraph.Any())
                             {
-                                lastSentence.Concat(sentenceString);
-                                continue;
+                                var lastSentence = lastParagraph.Last();
+                                if (lastSentence.IsNotFinished)
+                                {
+                                    text.Remove(paragraph);
+                                    paragraph = lastParagraph;
+                                    lastSentence.Concat(sentenceString);
+                                    continue;
+                                }
                             }
                         }
                     }
@@ -40,7 +50,7 @@ namespace LinguisticLibrary.Data
                     }
 
                     var sentence = ParseSentenceString(sentenceString, terminalPunctuationMark);
-                    text.Add(sentence);
+                    paragraph.Add(sentence);
                 }
 
                 line = reader.ReadLine();
@@ -56,7 +66,7 @@ namespace LinguisticLibrary.Data
             return Parse(reader);
         }
 
-        private static Sentence ParseSentenceString(string source, PunctuationMark endMark)
+        public static Sentence ParseSentenceString(string source, PunctuationMark endMark)
         {
             var sentence = new Sentence();
 
@@ -89,7 +99,7 @@ namespace LinguisticLibrary.Data
                                 sentenceParts.Add(compositeWord);
                         }
 
-                        if(index + markLenght < part.Length)
+                        if(index + markLenght < sPart.Length)
                         {
                             compositeWord.Add(mark);
                             if (!sentenceParts.Contains(compositeWord))
@@ -111,22 +121,29 @@ namespace LinguisticLibrary.Data
                             sentenceParts.Add(compositeWord);
                     }
 
+                    // Add single text elements to sentence
                     foreach(var sentencePart in sentenceParts)
                     {
-                        if (sentencePart == sentenceParts.First())
-                            sentencePart.InnerOption = SingleTextElementInnerOption.LeftSpace;
+                        if (sentencePart == sentenceParts.Last())
+                            sentencePart.InnerOption = SingleTextElementInnerOption.RightSpace;
                         sentence.Add(sentencePart);
                     }
                 }
                 else
                 {
-                    var word = new Word() { StringValue = sPart, InnerOption = SingleTextElementInnerOption.LeftSpace };
+                    var word = new Word() { StringValue = sPart, InnerOption = SingleTextElementInnerOption.RightSpace };
                     sentence.Add(word);
                 }
             }
 
             if (endMark.HasValue)
+            {
+                if(sentence.Last().InnerOption == SingleTextElementInnerOption.RightSpace)
+                {
+                    sentence.Last().InnerOption = SingleTextElementInnerOption.None;
+                }
                 sentence.Add(endMark);
+            }
 
             return sentence;
         }
@@ -134,12 +151,12 @@ namespace LinguisticLibrary.Data
 
         #region Extensions
 
-        private static bool ContainsPunctuationMark(this string source, PunctuationMark punctuationMark)
+        public static bool ContainsPunctuationMark(this string source, PunctuationMark punctuationMark)
         {
             return source.IndexOfPunctuationMark(punctuationMark) != -1;
         }
 
-        private static int IndexOfPunctuationMark(this string source, PunctuationMark punctuationMark)
+        public static int IndexOfPunctuationMark(this string source, PunctuationMark punctuationMark)
         {
             var tempSource = source;
             var tempIndex = 0;
@@ -193,19 +210,82 @@ namespace LinguisticLibrary.Data
             return -1;
         }
 
-        private static IEnumerable<PunctuationMark> GetPunctuationMarks(this string source, IEnumerable<PunctuationMark> punctuationMarks)
+        public static IEnumerable<PunctuationMark> GetPunctuationMarks(this string source, IEnumerable<PunctuationMark> punctuationMarks)
         {
             // Ordered by string value collection, will give us ability to find composite punctuation marks first
             var orderedMarks = punctuationMarks.OrderByDescending(mark => mark.StringValue.Length);
 
-            var existPunctuationMarks = 
-                orderedMarks.Where(x => source.ContainsPunctuationMark(x)).
-                    OrderBy(x => source.IndexOfPunctuationMark(x));
+            var punctuationString = string.Empty;
+            var punctuationDetected = false;
 
-            return existPunctuationMarks;
+            var leftPart = string.Empty;
+            var rightPart = string.Empty;
+            var hasLeftSpace = false;
+            var hasRightSpace = false;
+            var index = 0;
+
+            foreach (var symbol in source)
+            {
+                if (char.IsPunctuation(symbol))
+                {
+                    if (!punctuationDetected)
+                    {
+                        leftPart = source.Substring(0, index);
+                        hasLeftSpace = string.IsNullOrEmpty(leftPart) || char.IsWhiteSpace(leftPart.Last());
+                    }
+
+                    punctuationDetected = true;
+                    punctuationString += symbol;
+                }
+                else
+                {
+                    if (punctuationDetected)
+                    {
+                        rightPart = source.Substring(index - 1 + punctuationString.Length);
+                        hasRightSpace = string.IsNullOrEmpty(rightPart) || char.IsWhiteSpace(rightPart.First());
+
+                        var innerOption = hasLeftSpace && hasRightSpace
+                            ? SingleTextElementInnerOption.BothSpace
+                            : !hasLeftSpace && hasRightSpace
+                                ? SingleTextElementInnerOption.RightSpace
+                                : hasLeftSpace && !hasRightSpace
+                                    ? SingleTextElementInnerOption.LeftSpace
+                                    : SingleTextElementInnerOption.None;
+                        var punctuationMark = new PunctuationMark() { StringValue = punctuationString, InnerOption = innerOption };
+                        if (orderedMarks.Any(mark => mark.StringValue == punctuationMark.StringValue && mark.InnerOption == punctuationMark.InnerOption))
+                        {
+                            yield return orderedMarks.First(mark => mark.StringValue == punctuationMark.StringValue && mark.InnerOption == punctuationMark.InnerOption);
+                        }
+                    }
+
+                    punctuationString = string.Empty;
+                    punctuationDetected = false;
+                }
+
+                index++;
+            }
+
+            if (punctuationDetected)
+            {
+                rightPart = source.Substring(index);
+                hasRightSpace = string.IsNullOrEmpty(rightPart) || char.IsWhiteSpace(rightPart.First());
+
+                var innerOption = hasLeftSpace && hasRightSpace
+                    ? SingleTextElementInnerOption.BothSpace
+                    : !hasLeftSpace && hasRightSpace
+                        ? SingleTextElementInnerOption.RightSpace
+                        : hasLeftSpace && !hasRightSpace
+                            ? SingleTextElementInnerOption.LeftSpace
+                            : SingleTextElementInnerOption.None;
+                var punctuationMark = new PunctuationMark() { StringValue = punctuationString, InnerOption = innerOption };
+                if (orderedMarks.Any(mark => mark.StringValue == punctuationMark.StringValue && mark.InnerOption == punctuationMark.InnerOption))
+                {
+                    yield return orderedMarks.First(mark => mark.StringValue == punctuationMark.StringValue && mark.InnerOption == punctuationMark.InnerOption);
+                }
+            }
         }
 
-        private static PunctuationMark GetFirstOrDefaultPunctuationMark(this string source, IEnumerable<PunctuationMark> list)
+        public static PunctuationMark GetFirstOrDefaultPunctuationMark(this string source, IEnumerable<PunctuationMark> list)
         {
             var punctuationMarks = source.GetPunctuationMarks(list);
             return punctuationMarks.Any() ? punctuationMarks.First() : new PunctuationMark();

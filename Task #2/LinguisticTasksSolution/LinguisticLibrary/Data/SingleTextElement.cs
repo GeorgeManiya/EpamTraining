@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace LinguisticLibrary.Data
 {
@@ -12,6 +13,7 @@ namespace LinguisticLibrary.Data
         public SingleTextElementInnerOption InnerOption { get; set; }
 
         private string _stringValue;
+
         public override string StringValue
         {
             get
