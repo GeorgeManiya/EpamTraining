@@ -5,10 +5,10 @@
         xmlns:text="clr-namespace:LinguisticLibrary.Data;assembly=LinguisticLibrary"
         xmlns:textInterfaces="clr-namespace:LinguisticLibrary.Interfaces;assembly=LinguisticLibrary"
         xmlns:data="clr-namespace:LinguisticFeaturesAnalyzer.Data"
-        Title="MainWindow" Height="350" Width="700">
+        Title="MainWindow" Height="350" Width="750">
     <Window.Resources>
         <data:BooleanToBrushConverter x:Key="ActiveBrushConverter"
-                                      True="Red" False="Transparent"/>
+                                      True="#44E8BF32" False="Transparent"/>
     </Window.Resources>
     
     <Grid>
@@ -21,39 +21,46 @@
             <MenuItem Header="File" 
                       Click="OnMenuItemClick"/>
         </Menu>
-        <!--<ItemsControl Name="TextContainer" Grid.Row="1">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+        <ItemsControl Name="TextContainer" Grid.Row="1" Margin="5" BorderBrush="LightGray"
+                      ScrollViewer.CanContentScroll="False" BorderThickness="1" Padding="5"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ItemsControl.Template>
+                <ControlTemplate TargetType="{x:Type ItemsControl}">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <ScrollViewer>
+                            <ItemsPresenter Margin="{TemplateBinding Padding}"/>
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </ItemsControl.Template>
             <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type textInterfaces:ISingleTextElement}">
-                    <TextBlock Text="{Binding}"/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>-->
-        <ItemsControl Name="TextContainer" Grid.Row="1">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type data:ActiveSentence}">
-                    <ItemsControl ItemsSource="{Binding}">
-                        <ItemsControl.Background>
-                            <Binding Path="IsActive" NotifyOnSourceUpdated="True"
-                                     Converter="{StaticResource ActiveBrushConverter}"/>
-                        </ItemsControl.Background>
+                <DataTemplate DataType="{x:Type text:Paragraph}">
+                    <ItemsControl ItemsSource="{Binding}" MinHeight="10">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Orientation="Horizontal"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock x:Name="Text" Text="{Binding}"/>
+                            <DataTemplate DataType="{x:Type data:ActiveSentence}">
+                                <ItemsControl ItemsSource="{Binding}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock x:Name="Text" Text="{Binding}">
+                                                <TextBlock.Background>
+                                                    <Binding Path="IsActive" NotifyOnSourceUpdated="True"
+                                                             Converter="{StaticResource ActiveBrushConverter}"/>
+                                                </TextBlock.Background>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
@@ -62,17 +69,82 @@
         </ItemsControl>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <GroupBox Header="По типу предложений">
-                <StackPanel Orientation="Horizontal">
-                    <ComboBox Name="SentenceTypeComboBox" Width="100" Margin="5"/>
-                    <Button Name="FilterBySentenceTypeButton" Margin="5"
-                            Content="Фильтровать" Width="100"
+            <GroupBox Header="Выделить предложения по" Margin="5">
+                <Grid Margin="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton Name="EnableByTerminalPunctuationsRadioButton" IsChecked="True"
+                                     Width="170" VerticalContentAlignment="Center" GroupName="ByPunctuationType"> 
+                            <TextBlock Text="содержит разделительные знаки пунктуации"
+                                       TextWrapping="Wrap"/>
+                        </RadioButton>
+                        <ComboBox Name="TerminalPunctuationTypeComboBox" Width="50" Margin="5"
+                                  IsEnabled="{Binding ElementName=EnableByTerminalPunctuationsRadioButton, Path=IsChecked, Mode=OneWay}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1">
+                        <RadioButton Name="EnableByInternalPunctuationsRadioButton" 
+                                     Width="170" VerticalContentAlignment="Center" GroupName="ByPunctuationType">
+                            <TextBlock Text="содержит внутренние знаки пунктуации"
+                                       TextWrapping="Wrap"/>
+                        </RadioButton>
+                        <ComboBox Name="InternalPunctuationTypeComboBox" Width="50" Margin="5"
+                                  IsEnabled="{Binding ElementName=EnableByInternalPunctuationsRadioButton, Path=IsChecked, Mode=OneWay}"/>
+                    </StackPanel>
+                    <Button Name="FilterBySentenceTypeButton" Margin="0,2" HorizontalAlignment="Left"
+                            Content="Выделить" Width="100" Grid.Row="2" Height="25"
                             Click="OnFilterBySentenceTypeButtonClick"/>
-                </StackPanel>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Быстрая замена" Margin="5" Grid.Column="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Искомое слово" VerticalAlignment="Center" Width="100"/>
+                        <TextBox Name="OriginalWord" Width="150" Margin="2" 
+                                 VerticalContentAlignment="Center" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1">
+                        <TextBlock Text="Заменить на" VerticalAlignment="Center" Width="100"/>
+                        <TextBox Name="NewWord" Width="150" Margin="2" 
+                                 VerticalContentAlignment="Center" Height="25"/>
+                    </StackPanel>
+                    <Button Name="ChangeWordsInTextButton" Grid.Row="2" Height="25"
+                            HorizontalAlignment="Left" Content="Заменить" Margin="0,2" Width="100"
+                            Click="OnChangeWordsInTextButtonClick"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Дополнительно" Margin="5" Grid.Column="2"
+                      HorizontalAlignment="Left">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <RadioButton Name="SortByWordsCountRadioButton" Width="180" VerticalContentAlignment="Center" Margin="5,0"
+                                 IsChecked="True">
+                        <TextBlock Text="Отсортировать по количесву слов в предложении" TextWrapping="Wrap"/>
+                    </RadioButton>
+                    <RadioButton Name="SortBySentenceCountRadioButton" Width="180" Grid.Row="1" 
+                                 VerticalContentAlignment="Center" Margin="5,0">
+                        <TextBlock Text="Отсортировать по количесву предложений в абзаце" TextWrapping="Wrap"/>
+                    </RadioButton>
+                    <Button Name="SortByButton" Grid.Row="2" HorizontalAlignment="Left"
+                            Margin="0,2" Content="Сортировать" Width="100" Height="25"
+                            Click="OnSortByButtonClick"/>
+                </Grid>
             </GroupBox>
         </Grid>
     </Grid>
