@@ -35,12 +35,28 @@ namespace LinguisticFeaturesAnalyzer.Data
 
         public static ActiveSentence GetActivatedSentence(Sentence sentence)
         {
-            var acticeSentence = new ActiveSentence();
+            var activeSentence = new ActiveSentence();
             foreach (var element in sentence)
             {
-                acticeSentence.Add(GetActivatedSingleElement(element));
+                activeSentence.Add(GetActivatedSingleElement(element));
             }
-            return acticeSentence;
+            return activeSentence;
+        }
+
+        public static Text GetActivatedText(Text text)
+        {
+            var activeText = new Text();
+            foreach(var paragraph in text)
+            {
+                var activeParagraph = new Paragraph();
+                foreach(var sentence in paragraph)
+                {
+                    activeParagraph.Add(GetActivatedSentence(sentence));
+                }
+                activeText.Add(activeParagraph);
+            }
+
+            return activeText;
         }
     }
 }

@@ -8,6 +8,6 @@ namespace LinguisticFeaturesAnalyzer.Data
 {
     interface IActiveTextComponent
     {
-        bool IsActive { get; }
+        bool IsActive { get; set; }
     }
 }

@@ -18,7 +18,17 @@ namespace LinguisticFeaturesAnalyzer.Data
             {
                 _isActive = value;
                 OnPropertyChanged("IsActive");
+
+                foreach (var singleElement in this.OfType<IActiveTextComponent>())
+                {
+                    singleElement.IsActive = value;
+                }
             }
+        }
+
+        public void Deactivate()
+        {
+            IsActive = false;
         }
 
         private void OnPropertyChanged(string propertyName)
