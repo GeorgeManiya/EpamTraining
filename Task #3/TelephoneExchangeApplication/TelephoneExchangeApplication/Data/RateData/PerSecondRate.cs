@@ -15,7 +15,6 @@ namespace TelephoneExchangeApplication.Data.RateData
             set { _pricePerSecond = value; }
         }
 
-        private float _pricePerMinute;
         public override float PricePerMinute
         {
             get { return _pricePerSecond * 60; }

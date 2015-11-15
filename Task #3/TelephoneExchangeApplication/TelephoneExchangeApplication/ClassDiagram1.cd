@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TelephoneExchangeApplication.Data.BillingSystem" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\BillingSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TelephoneExchangeApplication.Data.ClientContract" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\ClientContract.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TelephoneExchangeApplication.Data.ClientTerminal" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAQAAABAASIAAgAEAACIAABAAAACEAYAAEBgAAACA=</HashCode>
+      <FileName>Data\ClientTerminal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TelephoneExchangeApplication.Data.Port" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAABAAAACA=</HashCode>
+      <FileName>Data\Port.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TelephoneExchangeApplication.Data.Session" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Session.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TelephoneExchangeApplication.Data.TelephoneExchange" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\TelephoneExchange.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TelephoneExchangeApplication.Data.RateData.PerMinuteRate" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAgAEEAAAAAAAAAAAgA=</HashCode>
+      <FileName>Data\RateData\PerMinuteRate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TelephoneExchangeApplication.Data.RateData.PerSecondRate" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAACAAAgAAAAAAAAAAAAAAAAAgAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Data\RateData\PerSecondRate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TelephoneExchangeApplication.Data.Requests.Request" Collapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Requests\Request.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TelephoneExchangeApplication.Data.Responces.Responce" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAABAAAAAA=</HashCode>
+      <FileName>Data\Responces\Responce.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TelephoneExchangeApplication.Program" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="TelephoneExchangeApplication.Data.TelephoneNumber" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgEAgAAAAAAAAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>Data\TelephoneNumber.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Interface Name="TelephoneExchangeApplication.Data.IClientTerminal" Collapsed="true">
+    <Position X="3" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAQAAAAAAQAAAAAEAAAIAABAAAACAAIAAEBAAAACA=</HashCode>
+      <FileName>Data\IClientTerminal.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TelephoneExchangeApplication.Data.IPort" Collapsed="true">
+    <Position X="4.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAACA=</HashCode>
+      <FileName>Data\IPort.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TelephoneExchangeApplication.Data.ITelephoneExchange" Collapsed="true">
+    <Position X="3" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\ITelephoneExchange.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TelephoneExchangeApplication.Data.RateData.IRate" Collapsed="true">
+    <Position X="6.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAgAEEAAAAAAAAAAAgA=</HashCode>
+      <FileName>Data\RateData\IRate.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="TelephoneExchangeApplication.Data.ConnectionState" Collapsed="true">
+    <Position X="3" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Data\ConnectionState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TelephoneExchangeApplication.Data.Responces.ResponceState" Collapsed="true">
+    <Position X="4.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAIAAAAAAAABAAAAAACAAAAAEAAAAAAA=</HashCode>
+      <FileName>Data\Responces\ResponceState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,6 @@
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #3\TelephoneExchangeApplication\TelephoneExchangeApplication\bin\Debug\TelephoneExchangeApplication.exe.config
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #3\TelephoneExchangeApplication\TelephoneExchangeApplication\bin\Debug\TelephoneExchangeApplication.exe
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #3\TelephoneExchangeApplication\TelephoneExchangeApplication\bin\Debug\TelephoneExchangeApplication.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #3\TelephoneExchangeApplication\TelephoneExchangeApplication\obj\Debug\TelephoneExchangeApplication.exe
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #3\TelephoneExchangeApplication\TelephoneExchangeApplication\obj\Debug\TelephoneExchangeApplication.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #3\TelephoneExchangeApplication\TelephoneExchangeApplication\obj\Debug\TelephoneExchangeApplication.csprojResolveAssemblyReference.cache

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TelephoneExchangeApplication.Data
 {
-    class Client
+    interface IClearEventHandles
     {
+        void ClearHandlers();
     }
 }
