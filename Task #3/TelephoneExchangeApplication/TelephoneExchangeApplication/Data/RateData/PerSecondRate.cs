@@ -6,22 +6,24 @@ using System.Threading.Tasks;
 
 namespace TelephoneExchangeApplication.Data.RateData
 {
-    class PerSecondRate : PerMinuteRate
+    class PerSecondRate : IRate
     {
-        private float _pricePerSecond;
-        public float PricePerSecond
+        public PerSecondRate(float pricePerSecond, float monthlyFee, int freeMinutes)
         {
-            get { return _pricePerSecond; }
-            set { _pricePerSecond = value; }
+            PricePerSecond = pricePerSecond;
+            MonthlyFee = monthlyFee;
+            FreeMinutesPerMonth = freeMinutes;
         }
 
-        public override float PricePerMinute
-        {
-            get { return _pricePerSecond * 60; }
-            set { _pricePerSecond = value / 60; }
-        }
+        public float PricePerSecond { get; private set; }
 
-        public override float CalculateCost(TimeSpan callDuration)
+        public float MonthlyFee { get; private set; }
+
+        public int FreeMinutesPerMonth { get; private set; }
+
+        public bool HasFreeMinutes { get { return FreeMinutesPerMonth > 0; } }
+
+        public float CalculateCost(TimeSpan callDuration)
         {
             var totalSeconds = callDuration.TotalSeconds;
             return (float)totalSeconds * PricePerSecond;

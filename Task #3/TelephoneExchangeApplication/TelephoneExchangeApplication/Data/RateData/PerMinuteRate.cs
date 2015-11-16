@@ -8,15 +8,22 @@ namespace TelephoneExchangeApplication.Data.RateData
 {
     class PerMinuteRate : IRate
     {
-        public virtual float PricePerMinute { get; set; }
+        public PerMinuteRate(float pricePerMinute, float monthlyFee, int freeMinutes)
+        {
+            PricePerMinute = pricePerMinute;
+            MonthlyFee = monthlyFee;
+            FreeMinutesPerMonth = freeMinutes;
+        }
 
-        public float MonthlyFee { get; set; }
+        public float PricePerMinute { get; private set; }
 
-        public int FreeMinutesPerMonth { get; set; }
+        public float MonthlyFee { get; private set; }
+
+        public int FreeMinutesPerMonth { get; private set; }
 
         public bool HasFreeMinutes { get { return FreeMinutesPerMonth > 0; } }
 
-        public virtual float CalculateCost(TimeSpan callDuration)
+        public float CalculateCost(TimeSpan callDuration)
         {
             var totalMinutes = callDuration.TotalMinutes;
             return (float)totalMinutes * PricePerMinute;

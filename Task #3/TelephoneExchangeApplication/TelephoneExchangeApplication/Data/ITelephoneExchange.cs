@@ -11,10 +11,9 @@ namespace TelephoneExchangeApplication.Data
     {
         ICollection<Port> Ports { get; }
         ICollection<ClientTerminal> Terminals { get; }
-        ICollection<ClientContract> Contracts { get; }
         ICollection<IRate> Rates { get; }
 
-        ICollection<Session> SessionHistory { get; }
+        BillingSystem BillingSystem { get; }
         ICollection<Session> CurrentSessions { get; }
 
         void AddRange(ICollection<Port> ports, ICollection<ClientTerminal> terminals);
@@ -23,5 +22,8 @@ namespace TelephoneExchangeApplication.Data
         ClientTerminal AddNewTerminal();
         Port AddNewPort();
         TelephoneNumber? GetFreeTelephoneNumber(ushort code);
+
+        void ChangeClientRate(ClientContract client, IRate newRate);
+        void RemoveClient(ClientContract client);
     }
 }

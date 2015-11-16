@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace TelephoneExchangeApplication.Data.RateData
 {
-    internal interface IRate
+    interface IRate
     {
-        float PricePerMinute { get; }
-
         float MonthlyFee { get; }
 
         int FreeMinutesPerMonth { get; }

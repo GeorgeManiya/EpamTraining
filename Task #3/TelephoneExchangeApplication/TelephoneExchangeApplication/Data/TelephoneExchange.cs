@@ -16,34 +16,33 @@ namespace TelephoneExchangeApplication.Data
         public TelephoneExchange()
         {
             _terminalToPertConnections = new List<TerminalToPortConnection>();
-            SessionHistory = new List<Session>();
             CurrentSessions = new List<Session>();
             Rates = new List<IRate>();
+            BillingSystem = new BillingSystem();
 
             Ports = new List<Port>();
             Terminals = new List<ClientTerminal>();
-            Contracts = new List<ClientContract>();
         }
 
         public TelephoneExchange(ICollection<Port> ports, ICollection<ClientTerminal> terminals)
         {
             _terminalToPertConnections = new List<TerminalToPortConnection>();
-            SessionHistory = new List<Session>();
             CurrentSessions = new List<Session>();
             Rates = new List<IRate>();
+            BillingSystem = new BillingSystem();
 
             Ports = ports;
             Terminals = terminals;
-            Contracts = new List<ClientContract>();
         }
 
         public ICollection<Port> Ports { get; private set; }
 
         public ICollection<ClientTerminal> Terminals { get; private set; }
 
-        public ICollection<ClientContract> Contracts { get; private set; }
+        
 
-        public ICollection<Session> SessionHistory { get; private set; }
+
+        public BillingSystem BillingSystem { get; private set; }
 
         public ICollection<Session> CurrentSessions { get; private set; }
 
@@ -64,7 +63,7 @@ namespace TelephoneExchangeApplication.Data
                 throw new ArgumentException("There is no free telephone number in this code");
 
             // get free terminal
-            var freeTerminal = Terminals.FirstOrDefault(t => Contracts.All(c => c.Terminal != t));
+            var freeTerminal = Terminals.FirstOrDefault(t => BillingSystem.Contracts.All(c => c.Terminal != t));
             if (freeTerminal == null)
                 freeTerminal = AddNewTerminal();
 
@@ -72,7 +71,9 @@ namespace TelephoneExchangeApplication.Data
             ConnectTerminalToFreePort(freeTerminal);
 
             var newClientContract = new ClientContract(name, freeNumber.Value, freeTerminal, rate);
-            Contracts.Add(newClientContract);
+            BillingSystem.Contracts.Add(newClientContract);
+
+            BillingSystem.RateHistory.Add(new ClientRateHistory(newClientContract, BillingSystem.CurrentTime, rate));
 
             return newClientContract;
         }
@@ -118,11 +119,37 @@ namespace TelephoneExchangeApplication.Data
         {
             for(uint i = 100000; i <= 999999; i++)
             {
-                if (Contracts.All(c => c.TelephoneNumber.Code == code && c.TelephoneNumber.Number != i))
+                if (BillingSystem.Contracts.Where(c => c.TelephoneNumber.Code == code).All(c => c.TelephoneNumber.Number != i))
                     return new TelephoneNumber(code, i);
             }
 
             return null;
+        }
+
+
+        public void RemoveClient(ClientContract client)
+        {
+            var clientTerminal = client.Terminal;
+            var terminalToPortConnection = _terminalToPertConnections.First(c => c.Terminal == clientTerminal);
+            _terminalToPertConnections.Remove(terminalToPortConnection);
+            terminalToPortConnection.Dispose();
+
+            DisconnectWithTerminal(clientTerminal);
+
+            BillingSystem.Contracts.Remove(client);
+        }
+
+        public void ChangeClientRate(ClientContract client, IRate newRate)
+        {
+            var currentDate = BillingSystem.CurrentTime;
+            var lastHistoryDate = BillingSystem.RateHistory.LastOrDefault(h => h.Client == client).Date;
+            if (new DateTime(lastHistoryDate.Year, lastHistoryDate.Month + 1, lastHistoryDate.Day) > currentDate)
+                throw new ArgumentException("You cannot change rate before on month has gone");
+
+            client.Rate = newRate;
+            BillingSystem.CalculateClientMonthlyTax(client);
+            var rateHistory = new ClientRateHistory(client, currentDate, newRate);
+            BillingSystem.RateHistory.Add(rateHistory);
         }
 
 
@@ -163,11 +190,11 @@ namespace TelephoneExchangeApplication.Data
             var sourceTerminal = sender as ClientTerminal;
             if (sourceTerminal == null) return;
 
-            var sourceClient = Contracts.First(c => c.Terminal == sourceTerminal);
+            var sourceClient = BillingSystem.Contracts.First(c => c.Terminal == sourceTerminal);
             var sourceTelephoneNumber = sourceClient.TelephoneNumber;
             var incommingRequest = new InCommingRequest(sourceTelephoneNumber);
 
-            var clients = Contracts.Where(c => c.TelephoneNumber == e.Target);
+            var clients = BillingSystem.Contracts.Where(c => c.TelephoneNumber == e.Target);
             // Target number doesn't exist
             if (!clients.Any())     
             {
@@ -176,7 +203,7 @@ namespace TelephoneExchangeApplication.Data
             }
 
             var targetClient = clients.First();
-            var session = new Session(sourceClient, targetClient);
+            var session = new Session(sourceClient, targetClient, sourceClient.Rate);
 
             var targetPort = _terminalToPertConnections.First(c => c.Terminal == targetClient.Terminal).Port;
             switch (targetPort.State)
@@ -192,13 +219,13 @@ namespace TelephoneExchangeApplication.Data
                 case ConnectionState.Busy:
                     {
                         sourceTerminal.ReceiveResponce(ResponceState.IsBusy);
-                        SessionHistory.Add(session);
+                        BillingSystem.SessionHistory.Add(session);
                         break;
                     }
                 case ConnectionState.UnConnected:
                     {
                         sourceTerminal.ReceiveResponce(ResponceState.UnConnected);
-                        SessionHistory.Add(session);
+                        BillingSystem.SessionHistory.Add(session);
                         break;
                     }
             }
@@ -209,19 +236,20 @@ namespace TelephoneExchangeApplication.Data
             var terminal = sender as ClientTerminal;
             if (terminal == null) return;
 
-            var client = Contracts.First(c => c.Terminal == terminal);
+            var client = BillingSystem.Contracts.First(c => c.Terminal == terminal);
             var sessions = CurrentSessions.Where(s => s.Source == client || s.Target == client).ToList();
             if (!sessions.Any()) return;
 
 
             var session = sessions.First();
-            var currentTime = DateTime.Now;
+            var systemTime = DateTime.Now;
+            var currentTime = new DateTime(BillingSystem.CurrentTime.Year, BillingSystem.CurrentTime.Month, systemTime.Day, systemTime.Hour, systemTime.Minute, systemTime.Second);
             var connEvent = new ConnectionEvent(client, ConnectionEventType.Droped, currentTime);
             session.Events.Add(connEvent);
             session.EndCalling = currentTime;
 
             CurrentSessions.Remove(session);
-            SessionHistory.Add(session);
+            BillingSystem.SessionHistory.Add(session);
 
             var isTarget = session.Target == client;
             if (isTarget)
@@ -239,12 +267,13 @@ namespace TelephoneExchangeApplication.Data
             var targetTerminal = sender as ClientTerminal;
             if (targetTerminal == null) return;
 
-            var targetClient = Contracts.First(c => c.Terminal == targetTerminal);
+            var targetClient = BillingSystem.Contracts.First(c => c.Terminal == targetTerminal);
             var sessions = CurrentSessions.Where(s => s.Target == targetClient).ToList();
             if (!sessions.Any()) return;
 
             var session = sessions.First();
-            var currentTime = DateTime.Now;
+            var systemTime = DateTime.Now;
+            var currentTime = new DateTime(BillingSystem.CurrentTime.Year, BillingSystem.CurrentTime.Month, systemTime.Day, systemTime.Hour, systemTime.Minute, systemTime.Second);
             var connEvent = new ConnectionEvent(targetClient, ConnectionEventType.Accepted, currentTime);
             session.Events.Add(connEvent);
             session.StartCalling = currentTime;
@@ -264,21 +293,22 @@ namespace TelephoneExchangeApplication.Data
 
             var connection = connections.First();
             var sourceTerminal = connection.Terminal;
-            var sourceClient = Contracts.First(c => c.Terminal == sourceTerminal);
+            var sourceClient = BillingSystem.Contracts.First(c => c.Terminal == sourceTerminal);
 
             // if there is no session, connected with current terminal, do nothing
             var sessions = CurrentSessions.Where(s => s.Source == sourceClient || s.Target == sourceClient).ToList();
             if (!sessions.Any()) return;
 
             var session = sessions.First();
-            var currentTime = DateTime.Now;
+            var systemTime = DateTime.Now;
+            var currentTime = new DateTime(BillingSystem.CurrentTime.Year, BillingSystem.CurrentTime.Month, systemTime.Day, systemTime.Hour, systemTime.Minute, systemTime.Second);
             var connEvent = new ConnectionEvent(sourceClient, ConnectionEventType.Disconnected, currentTime);
             // end this session
             session.Events.Add(connEvent);
             session.EndCalling = currentTime;
 
             CurrentSessions.Remove(session);
-            SessionHistory.Add(session);
+            BillingSystem.SessionHistory.Add(session);
 
             var isTarget = session.Target == sourceClient;
             if (isTarget)

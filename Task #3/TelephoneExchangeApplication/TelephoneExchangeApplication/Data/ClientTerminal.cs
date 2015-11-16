@@ -45,20 +45,26 @@ namespace TelephoneExchangeApplication.Data
             switch (responce)
             {
                 case ResponceState.IsBusy:
+                    Console.WriteLine("Target telephone number is busy now");
                     Drop();
                     break;
                 case ResponceState.Droped:
+                    Console.WriteLine("Companion drop a call");
                     Drop();
                     break;
                 case ResponceState.UnConnected:
+                    Console.WriteLine("Target telephone number is not connected");
                     Drop();
                     break;
                 case ResponceState.DoesNotExist:
+                    Console.WriteLine("Target telephone number doen't exist");
                     Drop();
                     break;
                 case ResponceState.Calling:
+                    Console.WriteLine("Connection success");
                     break;
                 case ResponceState.Accepted:
+                    Console.WriteLine("Companion accept a call");
                     break;
             }
         }
