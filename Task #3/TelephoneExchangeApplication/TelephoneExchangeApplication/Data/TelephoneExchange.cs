@@ -204,6 +204,10 @@ namespace TelephoneExchangeApplication.Data
 
             var targetClient = clients.First();
             var session = new Session(sourceClient, targetClient, sourceClient.Rate);
+            var systemTime = DateTime.Now;
+            var currentTime = new DateTime(BillingSystem.CurrentTime.Year, BillingSystem.CurrentTime.Month, systemTime.Day, systemTime.Hour, systemTime.Minute, systemTime.Second);
+            var connEvent = new ConnectionEvent(targetClient, ConnectionEventType.Accepted, currentTime);
+            session.Events.Add(connEvent);
 
             var targetPort = _terminalToPertConnections.First(c => c.Terminal == targetClient.Terminal).Port;
             switch (targetPort.State)

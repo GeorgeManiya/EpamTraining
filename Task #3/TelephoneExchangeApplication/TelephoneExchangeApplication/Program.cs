@@ -245,7 +245,7 @@ namespace TelephoneExchangeApplication
                     Where(s => s.Source == client && lastEvent < s.EndCalling && s.EndCalling < date))
                 {
                     Console.WriteLine("Session: Target: {0}, Duration: {1}",
-                        session.Target, session.CallAccepted ? session.EndCalling.Subtract(session.EndCalling) : TimeSpan.Zero);
+                        session.Target, session.CallAccepted ? session.EndCalling.Subtract(session.StartCalling) : TimeSpan.Zero);
                 }
 
                 lastEvent = date;
