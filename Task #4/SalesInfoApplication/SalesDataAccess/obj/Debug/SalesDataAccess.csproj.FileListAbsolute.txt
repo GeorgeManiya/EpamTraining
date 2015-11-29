@@ -1,0 +1,11 @@
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesDataAccess\bin\Debug\SalesDataAccess.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesDataAccess\bin\Debug\SalesDataAccess.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesDataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesDataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesDataAccess\bin\Debug\SalesData.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesDataAccess\bin\Debug\SalesData.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesDataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesDataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesDataAccess\obj\Debug\SalesDataAccess.csprojResolveAssemblyReference.cache
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesDataAccess\obj\Debug\SalesDataAccess.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesDataAccess\obj\Debug\SalesDataAccess.pdb

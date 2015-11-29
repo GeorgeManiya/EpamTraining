@@ -1,0 +1,11 @@
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesBisnessLogic\bin\Debug\SalesBisnessLogic.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesBisnessLogic\bin\Debug\SalesBisnessLogic.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesBisnessLogic\bin\Debug\SalesDataAccess.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesBisnessLogic\bin\Debug\SalesData.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesBisnessLogic\bin\Debug\EntityFramework.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesBisnessLogic\bin\Debug\SalesDataAccess.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesBisnessLogic\bin\Debug\SalesData.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesBisnessLogic\bin\Debug\EntityFramework.xml
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesBisnessLogic\obj\Debug\SalesBisnessLogic.csprojResolveAssemblyReference.cache
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesBisnessLogic\obj\Debug\SalesBisnessLogic.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesBisnessLogic\obj\Debug\SalesBisnessLogic.pdb

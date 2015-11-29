@@ -247,7 +247,8 @@ namespace TelephoneExchangeApplication.Data
 
             var session = sessions.First();
             var systemTime = DateTime.Now;
-            var currentTime = new DateTime(BillingSystem.CurrentTime.Year, BillingSystem.CurrentTime.Month, systemTime.Day, systemTime.Hour, systemTime.Minute, systemTime.Second);
+            var callingEventTime = session.Events.First().EventTime;
+            var currentTime = new DateTime(callingEventTime.Year, callingEventTime.Month, callingEventTime.Day, systemTime.Hour, systemTime.Minute, systemTime.Second);
             var connEvent = new ConnectionEvent(client, ConnectionEventType.Droped, currentTime);
             session.Events.Add(connEvent);
             session.EndCalling = currentTime;
@@ -277,7 +278,8 @@ namespace TelephoneExchangeApplication.Data
 
             var session = sessions.First();
             var systemTime = DateTime.Now;
-            var currentTime = new DateTime(BillingSystem.CurrentTime.Year, BillingSystem.CurrentTime.Month, systemTime.Day, systemTime.Hour, systemTime.Minute, systemTime.Second);
+            var callingEventTime = session.Events.First().EventTime;
+            var currentTime = new DateTime(callingEventTime.Year, callingEventTime.Month, callingEventTime.Day, systemTime.Hour, systemTime.Minute, systemTime.Second);
             var connEvent = new ConnectionEvent(targetClient, ConnectionEventType.Accepted, currentTime);
             session.Events.Add(connEvent);
             session.StartCalling = currentTime;
@@ -305,7 +307,8 @@ namespace TelephoneExchangeApplication.Data
 
             var session = sessions.First();
             var systemTime = DateTime.Now;
-            var currentTime = new DateTime(BillingSystem.CurrentTime.Year, BillingSystem.CurrentTime.Month, systemTime.Day, systemTime.Hour, systemTime.Minute, systemTime.Second);
+            var callingEventTime = session.Events.First().EventTime;
+            var currentTime = new DateTime(callingEventTime.Year, callingEventTime.Month, callingEventTime.Day, systemTime.Hour, systemTime.Minute, systemTime.Second);
             var connEvent = new ConnectionEvent(sourceClient, ConnectionEventType.Disconnected, currentTime);
             // end this session
             session.Events.Add(connEvent);

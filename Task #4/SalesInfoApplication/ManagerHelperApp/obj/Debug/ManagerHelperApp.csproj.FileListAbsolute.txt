@@ -1,0 +1,13 @@
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\ManagerHelperApp\bin\Debug\ManagerHelperApp.exe
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\ManagerHelperApp\bin\Debug\ManagerHelperApp.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\ManagerHelperApp\bin\Debug\SalesBisnessLogic.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\ManagerHelperApp\bin\Debug\SalesDataAccess.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\ManagerHelperApp\bin\Debug\SalesData.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\ManagerHelperApp\bin\Debug\EntityFramework.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\ManagerHelperApp\bin\Debug\SalesBisnessLogic.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\ManagerHelperApp\bin\Debug\SalesDataAccess.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\ManagerHelperApp\bin\Debug\SalesData.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\ManagerHelperApp\bin\Debug\EntityFramework.xml
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\ManagerHelperApp\obj\Debug\ManagerHelperApp.csprojResolveAssemblyReference.cache
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\ManagerHelperApp\obj\Debug\ManagerHelperApp.exe
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\ManagerHelperApp\obj\Debug\ManagerHelperApp.pdb

@@ -1,0 +1,56 @@
+﻿<Window x:Class="SalesInfoApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:SalesInfoApplication"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Информация по продажам">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Name="SalesDataGrid" Margin="5,5,5,0">
+                        
+                    </DataGrid>
+                    <Button Name="UpdateSalesButton" Grid.Row="1" Content="Обновить"
+                            HorizontalAlignment="Right" Margin="5" Height="30" Width="100"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Списки">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Менеджеры" Margin="5,5,5,0"/>
+                        <ListBox Name="ManagersListBox" Margin="5" Grid.Row="1"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Клиенты" Margin="5,5,5,0"/>
+                        <ListBox Name="ClientsListBox" Margin="5" Grid.Row="1"/>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Продукты" Margin="5,5,5,0"/>
+                        <ListBox Name="ProductsListBox" Margin="5" Grid.Row="1"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

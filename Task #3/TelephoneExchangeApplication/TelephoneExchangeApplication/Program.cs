@@ -27,7 +27,7 @@ namespace TelephoneExchangeApplication
             _telephoneExchange.Rates.Add(perSecondRate);
             _telephoneExchange.Rates.Add(new PerMinuteRate(15, 0, 70));
 
-            var georgeClient = _telephoneExchange.AddClient("George", 29, perMinuteRate);
+            var georgeClient = _telephoneExchange.AddClient("George", 29, perSecondRate);
             var renataClient = _telephoneExchange.AddClient("Renata", 29, perSecondRate);
             var dmitriClient = _telephoneExchange.AddClient("Dmitri", 33, perMinuteRate);
 
@@ -126,8 +126,19 @@ namespace TelephoneExchangeApplication
             Console.WriteLine("Number:");
             var number = Convert.ToUInt32(Console.ReadLine());
 
-            var targetTelephoneNumber = new TelephoneNumber(code, number);
-            sourceClient.Terminal.Call(targetTelephoneNumber);
+            TelephoneNumber targetTelephoneNumber;
+            try
+            {
+                targetTelephoneNumber = new TelephoneNumber(code, number);
+                sourceClient.Terminal.Call(targetTelephoneNumber);
+            }
+            catch (ArgumentNullException exp)
+            {
+                Console.WriteLine(exp.Message);
+                Console.WriteLine("Press any key");
+                Console.ReadLine();
+                return;
+            }
 
             if(_telephoneExchange.BillingSystem.Contracts.Any(c => c.TelephoneNumber == targetTelephoneNumber))
             {
@@ -153,6 +164,7 @@ namespace TelephoneExchangeApplication
                 }
             }
 
+            Console.WriteLine("Press any key");
             Console.ReadLine();
         }
 
@@ -192,6 +204,7 @@ namespace TelephoneExchangeApplication
                 targetClient.Terminal.Drop();
             }
 
+            Console.WriteLine("Press any key");
             Console.ReadLine();
         }
 
@@ -226,6 +239,7 @@ namespace TelephoneExchangeApplication
                 catch(ArgumentException exp)
                 {
                     Console.WriteLine(exp.Message);
+                    Console.WriteLine("Press any key");
                     Console.ReadLine();
                 }
             }
@@ -238,19 +252,25 @@ namespace TelephoneExchangeApplication
 
             foreach(var taxHistory in _telephoneExchange.BillingSystem.TaxHistory.Where(h => h.Client == client))
             {
+                Console.WriteLine("-----------------------");
                 var date = taxHistory.PayDate;
                 Console.WriteLine("Date: {0} Tax: {1}", taxHistory.PayDate, taxHistory.Tax);
                 Console.WriteLine("History:");
                 foreach (var session in _telephoneExchange.BillingSystem.SessionHistory.
-                    Where(s => s.Source == client && lastEvent < s.EndCalling && s.EndCalling < date))
+                    Where(s => s.Source == client))
                 {
-                    Console.WriteLine("Session: Target: {0}, Duration: {1}",
-                        session.Target, session.CallAccepted ? session.EndCalling.Subtract(session.StartCalling) : TimeSpan.Zero);
+                    var endCalling = session.EndCalling;
+                    if(lastEvent < endCalling && endCalling < date)
+                    {
+                        Console.WriteLine("Session: Target: {0}, Duration: {1}, EndCalling: {2:dd.MM HH:mm:ss}",
+                        session.Target, session.CallAccepted ? session.EndCalling.Subtract(session.StartCalling) : TimeSpan.Zero, session.EndCalling);
+                    }
                 }
 
                 lastEvent = date;
             }
 
+            Console.WriteLine("Press any key");
             Console.ReadLine();
         }
     }

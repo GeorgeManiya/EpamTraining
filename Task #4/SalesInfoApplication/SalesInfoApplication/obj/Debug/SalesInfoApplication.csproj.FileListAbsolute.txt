@@ -1,0 +1,13 @@
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\bin\Debug\SalesInfoApplication.exe
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\bin\Debug\SalesInfoApplication.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\obj\Debug\SalesInfoApplication.csprojResolveAssemblyReference.cache
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\obj\Debug\MainWindow.g.cs
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\obj\Debug\App.g.cs
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\obj\Debug\SalesInfoApplication_MarkupCompile.cache
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\obj\Debug\SalesInfoApplication_MarkupCompile.lref
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\obj\Debug\MainWindow.baml
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\obj\Debug\SalesInfoApplication.g.resources
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\obj\Debug\SalesInfoApplication.Properties.Resources.resources
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\obj\Debug\SalesInfoApplication.csproj.GenerateResource.Cache
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\obj\Debug\SalesInfoApplication.exe
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\obj\Debug\SalesInfoApplication.pdb

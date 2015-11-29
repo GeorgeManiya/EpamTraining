@@ -13,7 +13,7 @@ namespace TelephoneExchangeApplication.Data
         public BillingSystem()
         {
             CurrentTime = DateTime.Now;
-            _timer = new Timer(new TimerCallback(OnTimerTick), null, 1000, 1000);
+            _timer = new Timer(new TimerCallback(OnTimerTick), null, 2000, 2000);
 
             Contracts = new List<ClientContract>();
             SessionHistory = new List<Session>();
@@ -73,11 +73,11 @@ namespace TelephoneExchangeApplication.Data
         {
             CurrentTime = CurrentTime.AddDays(1);
 
-            foreach (var client in Contracts.
-                Where(c => RateHistory.Any(h => h.Client == c 
-                && CurrentTime.Day == h.Date.Day && (CurrentTime.Month - 1) == h.Date.Month)))
+            foreach(var client in Contracts)
             {
-                CalculateClientMonthlyTax(client);
+                var lastRateHistory = RateHistory.Last(h => h.Client == client);
+                if(CurrentTime.Day == lastRateHistory.Date.Day && (CurrentTime.Month - 1) == lastRateHistory.Date.Month)
+                    CalculateClientMonthlyTax(client);
             }
         }
     }

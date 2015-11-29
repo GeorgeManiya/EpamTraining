@@ -1,0 +1,10 @@
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesData\bin\Debug\SalesData.dll.config
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesData\bin\Debug\SalesData.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesData\bin\Debug\SalesData.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesData\bin\Debug\EntityFramework.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesData\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesData\bin\Debug\EntityFramework.xml
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesData\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesData\obj\Debug\SalesData.csprojResolveAssemblyReference.cache
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesData\obj\Debug\SalesData.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesData\obj\Debug\SalesData.pdb

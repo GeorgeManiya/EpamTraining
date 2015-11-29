@@ -1,0 +1,13 @@
+﻿Выполняется установка сборки 'C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesWatcherService\bin\Debug\SalesWatcherService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesWatcherService\bin\Debug\SalesWatcherService.InstallLog
+   assemblypath = C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesWatcherService\bin\Debug\SalesWatcherService.exe
+Устанавливается служба WatcherService...
+Служба WatcherService успешно установлена.
+Создается исходный EventLog WatcherService в журнале Application...
+Выполняется фиксация сборки 'C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesWatcherService\bin\Debug\SalesWatcherService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesWatcherService\bin\Debug\SalesWatcherService.InstallLog
+   assemblypath = C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesWatcherService\bin\Debug\SalesWatcherService.exe
