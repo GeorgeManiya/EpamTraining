@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using SalesBisnessLogic;
 
 namespace SalesInfoApplication
 {
@@ -19,9 +8,27 @@ namespace SalesInfoApplication
     /// </summary>
     public partial class MainWindow : Window
     {
+        private SalesDataCore _salesCore;
+
         public MainWindow()
         {
             InitializeComponent();
+            _salesCore = new SalesDataCore();
+            BindingData();
+        }
+
+        private void BindingData()
+        {
+            SalesDataGrid.ItemsSource = _salesCore.Sales;
+            ManagersListBox.ItemsSource = _salesCore.Managers;
+            ClientsListBox.ItemsSource = _salesCore.Clients;
+            ProductsListBox.ItemsSource = _salesCore.Products;
+        }
+
+        private void OnUpdateSalesButtonClick(object sender, RoutedEventArgs e)
+        {
+            _salesCore.Refill();
+            BindingData();
         }
     }
 }

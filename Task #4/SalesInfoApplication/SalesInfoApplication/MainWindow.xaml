@@ -4,18 +4,32 @@
         xmlns:local="clr-namespace:SalesInfoApplication"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <TabControl>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TabControl Margin="5,5,5,0" Padding="0">
             <TabItem Header="Информация по продажам">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <DataGrid Name="SalesDataGrid" Margin="5,5,5,0">
-                        
+                    <DataGrid Name="SalesDataGrid" Margin="5" AutoGenerateColumns="False" ColumnWidth="*"
+                              IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Дата"
+                                                Binding="{Binding SaleDate, StringFormat={}{0:dd.MM.yyyy HH:mm}}"/>
+                            <DataGridTextColumn Header="Менеджер"
+                                                Binding="{Binding Manager.Name}"/>
+                            <DataGridTextColumn Header="Клиент"
+                                                Binding="{Binding Client.Name}"/>
+                            <DataGridTextColumn Header="Товар"
+                                                Binding="{Binding Product.ProductName}"/>
+                            <DataGridTextColumn Header="Стоимость"
+                                                Binding="{Binding Product.Cost}"/>
+                        </DataGrid.Columns>
                     </DataGrid>
-                    <Button Name="UpdateSalesButton" Grid.Row="1" Content="Обновить"
-                            HorizontalAlignment="Right" Margin="5" Height="30" Width="100"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Списки">
@@ -31,7 +45,8 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <TextBlock Text="Менеджеры" Margin="5,5,5,0"/>
-                        <ListBox Name="ManagersListBox" Margin="5" Grid.Row="1"/>
+                        <ListBox Name="ManagersListBox" Margin="5" Grid.Row="1"
+                                 DisplayMemberPath="Name"/>
                     </Grid>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
@@ -39,7 +54,8 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <TextBlock Text="Клиенты" Margin="5,5,5,0"/>
-                        <ListBox Name="ClientsListBox" Margin="5" Grid.Row="1"/>
+                        <ListBox Name="ClientsListBox" Margin="5" Grid.Row="1"
+                                 DisplayMemberPath="Name"/>
                     </Grid>
                     <Grid Grid.Column="2">
                         <Grid.RowDefinitions>
@@ -47,10 +63,23 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <TextBlock Text="Продукты" Margin="5,5,5,0"/>
-                        <ListBox Name="ProductsListBox" Margin="5" Grid.Row="1"/>
+                        <ListBox Name="ProductsListBox" Margin="5" Grid.Row="1">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding ProductName}"/>
+                                        <TextBlock Foreground="LightGray" 
+                                                   Text="{Binding Cost}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </Grid>
                 </Grid>
             </TabItem>
         </TabControl>
+        <Button Name="UpdateSalesButton" Grid.Row="1" Content="Обновить"
+                HorizontalAlignment="Right" Margin="5" Height="30" Width="100"
+                Click="OnUpdateSalesButtonClick"/>
     </Grid>
 </Window>

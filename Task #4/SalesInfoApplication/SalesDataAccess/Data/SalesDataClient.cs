@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using SalesData;
+using System.Linq;
 using Manager = SalesDataAccess.Models.Manager;
 using Client = SalesDataAccess.Models.Client;
 using Product = SalesDataAccess.Models.Product;
@@ -145,12 +146,24 @@ namespace SalesDataAccess.Data
 
         private SalesData.Sale ToEntity(Sale sale)
         {
+            var manager = _salesDataContext.Managers.Any(m => m.MangerName == sale.Manager.Name)
+                ? _salesDataContext.Managers.First(m => m.MangerName == sale.Manager.Name)
+                : ToEntity(sale.Manager);
+
+            var client = _salesDataContext.Clients.Any(c => c.ClientName == sale.Client.Name)
+                ? _salesDataContext.Clients.First(c => c.ClientName == sale.Client.Name)
+                : ToEntity(sale.Client);
+
+            var product = _salesDataContext.Products.Any(p => p.ProductName == sale.Product.ProductName && p.ProductCost == sale.Product.Cost)
+                ? _salesDataContext.Products.First(p => p.ProductName == sale.Product.ProductName && p.ProductCost == sale.Product.Cost)
+                : ToEntity(sale.Product);
+
             var entitySale = new SalesData.Sale()
             {
                 SaleID = sale.Id,
-                Manager = ToEntity(sale.Manager),
-                Client = ToEntity(sale.Client),
-                Product = ToEntity(sale.Product),
+                Manager = manager,
+                Client = client,
+                Product = product,
                 SaleDate = sale.SaleDate
             };
 

@@ -13,17 +13,27 @@ namespace SalesBisnessLogic
     {
         private readonly SalesDataClient _salesDataClient;
 
-        public IEnumerable<Manager> Managers { get { return _salesDataClient.Managers; } }
+        public IEnumerable<Manager> Managers { get; set; }
 
-        public IEnumerable<Client> Clients { get { return _salesDataClient.Clients; } }
+        public IEnumerable<Client> Clients { get; set; }
 
-        public IEnumerable<Product> Products { get { return _salesDataClient.Products; } }
+        public IEnumerable<Product> Products { get; set; }
 
-        public IEnumerable<Sale> Sales { get { return _salesDataClient.Sales; } }
+        public IEnumerable<Sale> Sales { get; set; }
 
         public SalesDataCore()
         {
             _salesDataClient = new SalesDataClient();
+
+            FillData();
+        }
+
+        private void FillData()
+        {
+            Managers = _salesDataClient.Managers;
+            Clients = _salesDataClient.Clients;
+            Products = _salesDataClient.Products;
+            Sales = _salesDataClient.Sales;
         }
 
         public void AddSale(Sale sale)
@@ -99,6 +109,11 @@ namespace SalesBisnessLogic
                     csvWriter.WriteLine(values);
                 }
             }
+        }
+
+        public void Refill()
+        {
+            FillData();
         }
     }
 }

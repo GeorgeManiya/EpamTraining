@@ -14,6 +14,7 @@ namespace SalesBisnessLogic
         void AddSale(Sale sale);
         void AddSale(string managerName, string clientName, string productName, int productCost, DateTime saleDate);
         void Save();
+        void Refill();
 
         IEnumerable<Sale> Read(string filePath);
         void Write(string filePath, IEnumerable<Sale> sales);

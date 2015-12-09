@@ -27,29 +27,37 @@ namespace SalesWatcherService
             _salesCore = new SalesDataCore();
             _fileWatcher = new FileSystemWatcher(@"D:\SalesRepository\", "*.csv");
             _fileWatcher.Changed += OnFileChanged;
-            _fileWatcher.Created += OnFileCreater;
+            //_fileWatcher.Created += OnFileCreated;
             _fileWatcher.EnableRaisingEvents = true;
-        }
-
-        private void OnFileCreater(object sender, FileSystemEventArgs e)
-        {
-            var filePath = e.FullPath;
-            var sales = _salesCore.Read(filePath);
-            foreach(var sale in sales)
-            {
-                _salesCore.AddSale(sale);
-            }
-            _salesCore.Save();
-        }
-
-        private void OnFileChanged(object sender, FileSystemEventArgs e)
-        {
-            
         }
 
         protected override void OnStop()
         {
-            
+            _fileWatcher.EnableRaisingEvents = false;
+        }
+
+        private void OnFileCreated(object sender, FileSystemEventArgs e)
+        {
+            var thread = new Thread(new ParameterizedThreadStart(ReadAndSendData));
+            thread.Start(e.FullPath);
+        }
+
+        private void OnFileChanged(object sender, FileSystemEventArgs e)
+        {
+            var thread = new Thread(new ParameterizedThreadStart(ReadAndSendData));
+            thread.Start(e.FullPath);
+        }
+
+        private void ReadAndSendData(object filePath)
+        {
+            Thread.Sleep(1000);
+            var dataSales = _salesCore.Sales;
+            var sales = _salesCore.Read(filePath.ToString());
+            foreach (var sale in sales.Where(s => !dataSales.Any(dS => dS.SaleDate == s.SaleDate && dS.Manager.Name == s.Manager.Name)))
+            {
+                _salesCore.AddSale(sale);
+            }
+            _salesCore.Save();
         }
     }
 }

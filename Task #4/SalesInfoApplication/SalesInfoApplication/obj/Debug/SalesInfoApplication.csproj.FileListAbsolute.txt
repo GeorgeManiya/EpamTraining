@@ -11,3 +11,14 @@ C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplicati
 C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\obj\Debug\SalesInfoApplication.csproj.GenerateResource.Cache
 C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\obj\Debug\SalesInfoApplication.exe
 C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\obj\Debug\SalesInfoApplication.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\bin\Debug\SalesInfoApplication.exe.config
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\bin\Debug\EntityFramework.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\bin\Debug\SalesBisnessLogic.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\bin\Debug\SalesDataAccess.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\bin\Debug\SalesData.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\bin\Debug\SalesBisnessLogic.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\bin\Debug\SalesDataAccess.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\bin\Debug\EntityFramework.xml
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #4\SalesInfoApplication\SalesInfoApplication\bin\Debug\SalesData.pdb
