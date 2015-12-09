@@ -1,0 +1,10 @@
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\Model\bin\Debug\Model.dll.config
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\Model\bin\Debug\Model.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\Model\bin\Debug\Model.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\Model\bin\Debug\EntityFramework.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\Model\bin\Debug\EntityFramework.xml
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\Model\obj\Debug\Model.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\Model\obj\Debug\Model.pdb

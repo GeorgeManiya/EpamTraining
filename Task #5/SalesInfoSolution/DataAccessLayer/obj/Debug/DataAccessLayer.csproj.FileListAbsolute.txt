@@ -1,0 +1,5 @@
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\Георгий\Documents\GitHub\EpamTraining\Task #5\SalesInfoSolution\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
