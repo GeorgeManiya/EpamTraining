@@ -1,12 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataAccessLayer.Models.UserRoleModels
+﻿namespace DataAccessLayer.Models.UserRoleModels
 {
-    class Role
+    public class Role
     {
+        public Role(int id, string roleName)
+        {
+            Id = id;
+            RoleName = roleName;
+        }
+
+        public int Id { get; private set; }
+        public string RoleName { get; private set; }
+
+        public void SetId(int id)
+        {
+            Id = id;
+        }
+
+        public void SetRoleName(string roleName)
+        {
+            RoleName = roleName;
+        }
     }
 }
